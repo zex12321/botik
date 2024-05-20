@@ -201,7 +201,7 @@ def get_critical(update, context):
     update.message.reply_text(critical_info)
 
 def get_ps(update, context):
-    ps_info = execute_command_ssh("ps")
+    ps_info = execute_command_ssh("ps | head -n 20")
     update.message.reply_text(ps_info)
 
 
@@ -214,7 +214,7 @@ def get_services(update, context):
     update.message.reply_text(services_info)
 
 def get_repl_logs(update, context):
-    repl_logs = execute_command_ssh("cat postgresql-14-main.log | grep repl | tail -n 15")
+    repl_logs = execute_command_ssh("cat /var/log/postgresql/postgresql-14-main.log | grep repl | tail -n 15")
     update.message.reply_text(repl_logs)
 
 def DbSelect(my_db_command):
