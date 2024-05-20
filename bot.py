@@ -214,7 +214,7 @@ def get_services(update, context):
     update.message.reply_text(services_info)
 
 def get_repl_logs(update, context):
-    repl_logs = execute_command_ssh("docker logs devops_bot-db-1 | grep repl ")
+    repl_logs = execute_command_ssh("cat postgresql-14-main.log | grep repl | tail -n 15")
     update.message.reply_text(repl_logs)
 
 def DbSelect(my_db_command):
